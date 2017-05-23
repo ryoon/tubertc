@@ -146,4 +146,5 @@ if (iceServers !== undefined) {
     ]);
 }
 
-easyrtc.listen(tubertcApp, socketServer);
+var easyrtcOpts = { 'apiPublicFolder': nconf.get('path') + 'easyrtc' };
+easyrtc.listen(tubertcApp, socketServer, easyrtcOpts);
