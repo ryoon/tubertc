@@ -49,35 +49,36 @@ if (enableAudioMeter === undefined) {
 }
 
 // Set up routes for static resources
-tubertcApp.use('/js', express.static(__dirname + '/public/js'));
-tubertcApp.use('/css', express.static(__dirname + '/public/css'));
-tubertcApp.use('/audio', express.static(__dirname + '/public/audio'));
-tubertcApp.use('/images', express.static(__dirname + '/public/images'));
+tubertcApp.use(nconf.get('path') + 'js', express.static(__dirname + '/public/js'));
+tubertcApp.use(nconf.get('path') + 'css', express.static(__dirname + '/public/css'));
+tubertcApp.use(nconf.get('path') + 'audio', express.static(__dirname + '/public/audio'));
+tubertcApp.use(nconf.get('path') + 'images', express.static(__dirname + '/public/images'));
 
 // Add a route for telemetry scripts
 if (debugMode) {
-    tubertcApp.use('/telemetry', express.static(__dirname + '/public/telemetry'));
+    tubertcApp.use(nconf.get('path') + 'telemetry', express.static(__dirname + '/public/telemetry'));
 }
 
 // Set up main index page (this changes depending on whether or not debugging is enabled in settings.json).
-tubertcApp.get('/', function(req, res) {
+tubertcApp.get(nconf.get('path'), function(req, res) {
     var pageTitle = 'tubertc';
     var extraScripts = '';
 
     // If debug mode is enabled, load our debugging script (and add [debug] in the title)
     if (debugMode) {
         pageTitle += ' [debug]';
-        extraScripts = '<script type="text/javascript"  src="/telemetry/debug.js"></script>';
+        extraScripts = '<script type="text/javascript"  src="' + nconf.get('path') + 'telemetry/debug.js"></script>';
     }
 
     if (enableAudioMeter) {
         pageTitle += '+am';
-        extraScripts += '<script type="text/javascript" src="/js/audiometer.js"></script>';
+        extraScripts += '<script type="text/javascript" src="' + nconf.get('path') + 'js/audiometer.js"></script>';
     }
 
     res.send(indexTmpl({
         title: pageTitle,
-        debugBody: extraScripts
+        debugBody: extraScripts,
+        path: nconf.get('path')
     }));
 });
 

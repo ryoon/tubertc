@@ -2,24 +2,24 @@
 <html lang="en">
     <head>
     <title> {{title}} </title>
-        <link rel="stylesheet" type="text/css" href="/css/min.css">
-        <link rel="stylesheet" type="text/css" href="/css/app.css">
-        <link rel="stylesheet" type="text/css" href="/css/chat.css">
-        <link rel="stylesheet" type="text/css" href="/css/dialog.css">
-        <link rel="stylesheet" type="text/css" href="/css/login.css">
-        <link rel="stylesheet" type="text/css" href="/css/viewports.css">
+        <link rel="stylesheet" type="text/css" href="{{path}}css/min.css">
+        <link rel="stylesheet" type="text/css" href="{{path}}css/app.css">
+        <link rel="stylesheet" type="text/css" href="{{path}}css/chat.css">
+        <link rel="stylesheet" type="text/css" href="{{path}}css/dialog.css">
+        <link rel="stylesheet" type="text/css" href="{{path}}css/login.css">
+        <link rel="stylesheet" type="text/css" href="{{path}}css/viewports.css">
     </head>
     <body>
         <div class="mainPanel appPage">
             <div class="logo">
-                <img src="/images/logo.svg" alt="[tubertc]">
+                <img src="{{path}}/images/logo.svg" alt="[tubertc]">
             </div>
             <div class="navCenterer">
                 <div class="navBar">
-                    <button id="cameraBtn"><img class="svg" src="/images/camera.svg" alt="[camera]"></button>
-                    <button id="micBtn"><img class="svg" src="/images/mic.svg" alt="[mic]"></button>
-                    <button id="dashBtn"><img class="svg" src="/images/dash.svg" alt="[dashboard]"></button>
-                    <button id="attrBtn"><img class="svg" src="/images/credits.svg" alt="[attr]"></button>
+                    <button id="cameraBtn"><img class="svg" src="{{path}}images/camera.svg" alt="[camera]"></button>
+                    <button id="micBtn"><img class="svg" src="{{path}}images/mic.svg" alt="[mic]"></button>
+                    <button id="dashBtn"><img class="svg" src="{{path}}images/dash.svg" alt="[dashboard]"></button>
+                    <button id="attrBtn"><img class="svg" src="{{path}}images/credits.svg" alt="[attr]"></button>
                     &nbsp;&nbsp;
                     <span id="timeLabel"></span>
                 </div>
@@ -77,27 +77,27 @@
         </div>
 
         <audio id="chatAlertSound">
-            <source src="/audio/blop.mp3"></source>
+            <source src="{{path}}audio/blop.mp3"></source>
         </audio>
 
-        <script type="text/javascript" src="/js/vendor/jquery-2.1.3.min.js"></script>
-        <script type="text/javascript" src="/js/error.js"></script>
-        <script type="text/javascript" src="/js/shell-quote.js"></script>
-        <script type="text/javascript" src="/js/vendor/chance.min.js"></script>
-        <script type="text/javascript" src="/js/vendor/handlebars-v2.0.0.js"></script>
-        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
-        <script type="text/javascript" src="/easyrtc/easyrtc.js"></script>
-        <script type="text/javascript" src="/js/dialog.js"></script>
-        <script type="text/javascript" src="/js/sound.js"></script>
-        <script type="text/javascript" src="/js/navbar.js"></script>
-        <script type="text/javascript" src="/js/clock.js"></script>
-        <script type="text/javascript" src="/js/chat-cmds.js"></script>
-        <script type="text/javascript" src="/js/chat.js"></script>
-        <script type="text/javascript" src="/js/login.js"></script>
-        <script type="text/javascript" src="/js/viewports.js"></script>
-        <script type="text/javascript" src="/js/vtc.js"></script>
+        <script type="text/javascript" src="{{path}}js/vendor/jquery-2.1.3.min.js"></script>
+        <script type="text/javascript" src="{{path}}js/error.js"></script>
+        <script type="text/javascript" src="{{path}}js/shell-quote.js"></script>
+        <script type="text/javascript" src="{{path}}js/vendor/chance.min.js"></script>
+        <script type="text/javascript" src="{{path}}js/vendor/handlebars-v2.0.0.js"></script>
+        <script type="text/javascript" src="{{path}}socket.io/socket.io.js"></script>
+        <script type="text/javascript" src="{{path}}easyrtc/easyrtc.js"></script>
+        <script type="text/javascript" src="{{path}}js/dialog.js"></script>
+        <script type="text/javascript" src="{{path}}js/sound.js"></script>
+        <script type="text/javascript" src="{{path}}js/navbar.js"></script>
+        <script type="text/javascript" src="{{path}}js/clock.js"></script>
+        <script type="text/javascript" src="{{path}}js/chat-cmds.js"></script>
+        <script type="text/javascript" src="{{path}}js/chat.js"></script>
+        <script type="text/javascript" src="{{path}}js/login.js"></script>
+        <script type="text/javascript" src="{{path}}js/viewports.js"></script>
+        <script type="text/javascript" src="{{path}}js/vtc.js"></script>
         {{{debugBody}}}
-        <script type="text/javascript" src="/js/room.js"></script>
-        <script type="text/javascript" src="/js/app.js"></script>
+        <script type="text/javascript" src="{{path}}js/room.js"></script>
+        <script type="text/javascript" src="{{path}}js/app.js"></script>
     </body>
 </html>
