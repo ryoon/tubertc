@@ -200,6 +200,7 @@ var VTCCore = {
     // Object structure:
     //   {
     //     cameraIsEnabled : <boolean>,
+    //     screenIsEnabled : <boolean>,
     //     micIsEnabled    : <boolean>
     //   }
     config: null,
@@ -238,6 +239,7 @@ var VTCCore = {
         }
 
         if (typeof config.cameraIsEnabled === 'boolean' &&
+            typeof config.screenIsEnabled === 'boolean' &&
             typeof config.micIsEnabled === 'boolean') {
             return true;
         } else {
@@ -251,6 +253,7 @@ var VTCCore = {
      * @param {Object} config - Configuration object of the shape:
      *   {
      *       cameraIsEnabled : <boolean>,
+     *       screenIsEnabled : <boolean>,
      *       micIsEnabled    : <boolean>
      *   }
      * Contains three fields denoting the initial state of the media devices.
@@ -390,6 +393,7 @@ var VTCCore = {
             return null;
         }
 
+        easyrtc.setScreenCapture(this.config.screenIsEnabled);
         easyrtc.enableVideo(this.config.cameraIsEnabled);
         easyrtc.enableAudio(this.config.micIsEnabled);
 
