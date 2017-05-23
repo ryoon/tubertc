@@ -26,10 +26,10 @@ var Viewport = function(peerName, dashboard) {
 
     // By default, mute everything. Unmute only when we are sure it isn't a "self" stream
     this.videoSrc = $('<video></video>', { title: peerName }).prop('muted', true);
-    this.userIcon = $('<img src="/images/user.svg">')
+    this.userIcon = $('<img src="' + window.location.pathname + 'images/user.svg">')
                         .attr('alt', peerName)
                         .addClass('trtc_usericon');
-    this.muteIcon = $('<img src="/images/muted.svg">')
+    this.muteIcon = $('<img src="' + window.location.pathname + 'images/muted.svg">')
                         .attr('alt', '[muted]')
                         .addClass('trtc_muted');
 
