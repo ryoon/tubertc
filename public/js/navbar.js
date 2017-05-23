@@ -322,6 +322,7 @@ var StatefulButton = function(id, selected) {
 };
 
 var NavBar = {
+    screenBtn: null,
     cameraBtn: null,
     micBtn: null,
     dashBtn: null,
@@ -334,6 +335,7 @@ var NavBar = {
      * @public
      */
     initialize: function() {
+        this.screenBtn = new StatefulButton('#screenBtn', false);
         this.cameraBtn = new StatefulButton('#cameraBtn', true);
         this.micBtn = new StatefulButton('#micBtn', true);
         this.dashBtn = new StatefulButton('#dashBtn');
