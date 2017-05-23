@@ -36,7 +36,7 @@ var vtcMain = function(params) {
         .fadeIn(function() {
             // Change the browser's URL bar so that people can use it to give out
             // links to other future callers
-            history.pushState({}, '', '/?room=' + escape(params.roomName));
+            history.pushState({}, '', window.location.protocol + "//" + window.location.host + window.location.pathname + '?room=' + escape(params.roomName));
 
             // Fade in the vtcRoom container used for placing the videos
             $('#vtcRoom').fadeIn();
