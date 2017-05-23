@@ -103,11 +103,11 @@ if (ssl !== undefined && ssl.key !== undefined && ssl.cert !== undefined) {
 }
 
 // Set log level according to debugMode, on production, log level is on error only
-var ioOpts;
+var ioOpts = { 'path': nconf.get('path') + 'socket.io' };
 if (debugMode) {
-    ioOpts = { 'log level': 3 };
+    ioOpts['log level'] = 3;
 } else {
-    ioOpts = { 'log level': 0 };
+    ioOpts['log level'] = 0;
 }
 
 var socketServer = io.listen(webServer, ioOpts);

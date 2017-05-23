@@ -444,6 +444,7 @@ var VTCCore = {
             easyrtc.setRoomOccupantListener(null);
         });
 
+        easyrtc.setSocketUrl("", { 'path': window.location.pathname + 'socket.io/' });
         easyrtc.initMediaSource(function() {
             easyrtc.connect('tubertc', function(myId) {
                 _this.client = new VTCClient(myId, roomName, _this._errorFn);
