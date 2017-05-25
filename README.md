@@ -12,6 +12,7 @@ Peer-to-peer video chat that works. It's tuber-time!
 * Buttons to selectively mute audio and turn off video
 * Client and server written in a single language: JavaScript
 * Supported without client software by browsers with [WebRTC](http://caniuse.com/#feat=rtcpeerconnection)
+* Support to run under subdirectory, default subdirectory is /vtc/
 
 ## Anti-Features
 * Does not require client software
@@ -40,6 +41,14 @@ heroku ps:scale web=1
 heroku open
 heroku logs --tail
 ```
+
+## Install to your machine
+If you want to run tubertc on your machine, please perform as follows.
+```
+npm install
+node server.js
+```
+And open http://localhost:8080/vtc/ with your browser.
 
 ## Configuration
 The server port, debug level, and SSL settings are configured via the `settings.json` file. tubertc uses port 8080, debug mode, and HTTP by default.
