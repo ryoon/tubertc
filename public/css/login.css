@@ -71,3 +71,7 @@
 .mediumFnt {
     font-size: 1.5em;
 }
+
+#loginContent input.streamRadio {
+    width: 3em;
+}

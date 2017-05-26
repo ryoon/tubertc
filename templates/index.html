@@ -43,6 +43,15 @@
                     <label for="roomNameEntry" class="mediumFnt">Room</label>
                     <input type="text" class="smooth mediumFnt" id="roomNameEntry">
                 </div>
+                <div id="videoStreamGroup">
+                    <label class="mediumFnt">Stream</label><br>
+                    <label class="smallFnt">
+                        <input type="radio" class="streamRadio" name="stream" id="videoStreamSelect" value="video" checked>
+                    Video Camera</label><br>
+                    <label class="smallFnt">
+                        <input type="radio" class="streamRadio" name="stream" id="screenStreamSelect" value="screen">
+                    Screen Capture (Google Chrome with '<code>--enable-usermedia-screen-capturing</code>' only</label>
+                </div>
                 <div id="btnGroup">
                     <button class="btn btn-b smooth mediumFnt" id="joinBtn">Join Room</button>
                 </div>

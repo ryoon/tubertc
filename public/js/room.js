@@ -119,6 +119,7 @@ var vtcMain = function(params) {
 
     VTCCore
         .initialize({
+            sourceName: params.sourceName,
             cameraIsEnabled: params.hasCamera,
             micIsEnabled: params.hasMic
         })

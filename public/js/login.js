@@ -82,6 +82,7 @@ var StorageCookie = {
     // The Object structure for our StorageCookie should look like the dictionary below:
     //   {
     //     "userName"        : <string>,
+    //     "sourceName"      : <string>,
     //     "cameraIsEnabled" : <bool>,
     //     "micIsEnabled"    : <bool>,
     //     "dashModeEnabled" : <bool>
@@ -96,6 +97,7 @@ var StorageCookie = {
      */
     _validate: function(dict) {
         return (typeof dict.userName === 'string' &&
+                typeof dict.sourceName === 'string' &&
                 typeof dict.cameraIsEnabled === 'boolean' &&
                 typeof dict.micIsEnabled === 'boolean' &&
                 typeof dict.dashModeEnabled === 'boolean');
@@ -209,6 +211,9 @@ var _loginMsg = $('#loginMsg');
 var _loginAlert = $('#loginAlert');
 var _userNameEntry = $('#userNameEntry');
 var _roomNameEntry = $('#roomNameEntry');
+var _sourceName = $('input[name=stream]:checked');
+var _sourceVideo = $('input[name=stream][value="video"]');
+var _sourceScreen = $('input[name=stream][value="screen"]');
 
 var Login = {
     _completionFn: null,
@@ -317,6 +322,7 @@ var Login = {
     _validate: function() {
         var userName = $.trim(_userNameEntry.val());
         var roomName = $.trim(_roomNameEntry.val());
+        var sourceName = _sourceName.val();
 
         if (userName.length === 0) {
             _loginAlert
@@ -333,6 +339,14 @@ var Login = {
                 .stop(true, false)
                 .slideDown();
             _roomNameEntry.focus();
+            return false;
+        }
+
+        if (sourceName.length === 0) {
+            _loginAlert
+                .html('Please select a <b>stream type</b>.')
+                .stop(true, false)
+                .slideDown();
             return false;
         }
 
@@ -413,6 +427,7 @@ var Login = {
 
         var userName = StorageCookie.getValue('userName');
         var roomName = Query.getRoomName();
+        var sourceName = StorageCookie.getValue('sourceName')
 
         if (userName !== null) {
             // @todo Verify that this doesn't introduce XSS
@@ -428,6 +443,14 @@ var Login = {
             // We don't set roomName because we want to make this field modifiable.
             _roomNameEntry
                 .val(generateRoomName());
+        }
+
+        if (sourceName !== null) {
+            if (sourceName == 'video') {
+               _sourceVideo.prop('checked', true);
+            } else if (sourceName == 'screen') {
+               _sourceScreen.prop('checked', true);
+            }
         }
 
         var scCameraEnabled = StorageCookie.getValue('cameraIsEnabled');
@@ -487,6 +510,7 @@ var Login = {
                     userName: _userNameEntry.val(),
                     roomName: _roomNameEntry.val(),
                     rtcName: toRtcRoomName(_roomNameEntry.val()),
+                    sourceName: _sourceName.val(),
                     cameraIsEnabled: config.cameraBtn.isSelected(),
                     hasCamera: config.cameraBtn.isEnabled(),
                     micIsEnabled: config.micBtn.isSelected(),
@@ -496,6 +520,7 @@ var Login = {
 
                 var trtcConfig = {
                     userName: params.userName,
+                    sourceName: params.sourceName,
                     cameraIsEnabled: params.cameraIsEnabled,
                     micIsEnabled: params.micIsEnabled,
                     dashModeEnabled: params.dashIsEnabled

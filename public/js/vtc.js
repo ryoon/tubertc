@@ -390,6 +390,9 @@ var VTCCore = {
             return null;
         }
 
+        if (this.config.sourceName == 'screen') {
+            easyrtc.setScreenCapture();
+        }
         easyrtc.enableVideo(this.config.cameraIsEnabled);
         easyrtc.enableAudio(this.config.micIsEnabled);
 
